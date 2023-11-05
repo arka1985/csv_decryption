@@ -1,6 +1,13 @@
 import streamlit as st
 import pandas as pd
 from cryptography.fernet import Fernet
+import streamlit as st
+import os
+
+# Get the current working directory
+current_directory = os.getcwd()
+
+st.write("Current Working Directory:", current_directory)
 
 # Streamlit app title and description
 st.title("CSV File Decryption App")
