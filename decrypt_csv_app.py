@@ -1,13 +1,6 @@
 import streamlit as st
 import pandas as pd
 from cryptography.fernet import Fernet
-import streamlit as st
-import os
-
-# Get the current working directory
-current_directory = os.getcwd()
-
-st.write("Current Working Directory:", current_directory)
 
 # Streamlit app title and description
 st.title("CSV File Decryption App")
@@ -50,9 +43,14 @@ if encrypted_csv_file and fernet_key_file:
 
     # Display the decrypted data
     st.write(decrypted_df)
-    if st.button("Save Decrypted Data to CSV"):
-        decrypted_df.to_csv("decrypted_patient_data.csv", index=False)
-        st.success("Decrypted data has been saved to 'decrypted_patient_data.csv'.")
+    if st.button("Save Decrypted Data"):
+        with open("decrypted_patient_data.csv", "w") as file:
+            decrypted_df.to_csv(file, index=False)
+            st.success("Decrypted data has been saved as decrypted_patient_data.csv")
+
+    #if st.button("Save Decrypted Data to CSV"):
+        #decrypted_df.to_csv("decrypted_patient_data.csv", index=False)
+        #st.success("Decrypted data has been saved to 'decrypted_patient_data.csv'.")
 else:
     st.warning("Please upload the encrypted CSV file and the Fernet key.")
 
