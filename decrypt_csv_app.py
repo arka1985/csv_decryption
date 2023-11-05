@@ -43,6 +43,9 @@ if encrypted_csv_file and fernet_key_file:
 
     # Display the decrypted data
     st.write(decrypted_df)
+    if st.button("Save Decrypted Data to CSV"):
+        decrypted_df.to_csv("decrypted_patient_data.csv", index=False)
+        st.success("Decrypted data has been saved to 'decrypted_patient_data.csv'.")
 else:
     st.warning("Please upload the encrypted CSV file and the Fernet key.")
 
